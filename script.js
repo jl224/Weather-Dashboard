@@ -40,6 +40,7 @@ $(document).ready(function () {
 
                 $("#temp").text(data.main.temp + "°F");
                 $("#hum").text(data.main.humidity + "%");
+                $("#wind").text(data.main.speed + "%");
 
                 // create html content for current weather
                 var title = $("<h3>").addClass("card-title").text(data.name + " (" + new Date().toLocaleDateString() + ")");
@@ -58,7 +59,28 @@ $(document).ready(function () {
 
                 // call follow-up api endpoints
                 fivedayForecast(inputField);
-                uvIndex(data.coord.lat, data.coord.lon);
+                var uv = uvIndex(data.coord.lat, data.coord.lon);
+
+
+                // create html elements for a bootstrap card
+                var col = $("<div>").addClass("w3-col");
+                var card = $("<div>").addClass("w3-card w3-container w3-teal w3-margin-top");
+                card.css("min-height", "20px");
+                var body = $("<div>").addClass("card-body p-2");
+
+                var title = $("<h5>").addClass("card-title").text("CURRENT");
+
+                var img = $("<img>").attr("src", "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png");
+
+                var p1 = $("<h5>").addClass("card-text").text("Temp: " + data.main.temp + " °F" + "  |  " + "Humidity: " + data.main.humidity + "%" + "  |  " + "Wind Speed: " + data.wind.speed + " MPH" + " UV index: " + data.main.uv + "%");
+                // var p2 = $("<p>").addClass("card-text").text("Humidity: " + data.main.humidity + "%");
+                // var p3 = $("<p>").addClass("card-text").text("Wind Speed: " + data.wind.speed + "MPH");
+                // var p4 = $("<p>").addClass("card-text").text("UV index: " + 0 + "%");
+
+                // merge together and put on page
+                col.append(card.append(body.append(title, img, p1)));
+                $("#current").append(col);
+                ///
             }
         });
     }
@@ -71,7 +93,7 @@ $(document).ready(function () {
             success: function (data) {
                 // overwrite any existing content with title and empty row
                 $("#forecast").html("<h4 class=\"mt-3\">5-Day Forecast:</h4>").append("<div class=\"row\">");
-                console.log("forecast", data)
+                // console.log("forecast", data)
                 // < div class="w3-third" >
                 //  <div class="w3-card w3-container w3-teal" style="min-height:20px">
                 // loop over all forecasts (by 3-hour increments)
@@ -81,8 +103,8 @@ $(document).ready(function () {
                     if (data.list[i].dt_txt.indexOf("12:00:00") !== -1) {
 
                         // create html elements for a bootstrap card
-                        var col = $("<div>").addClass("w3-third");
-                        var card = $("<div>").addClass("w3-card w3-container w3-teal");
+                        var col = $("<div>").addClass("col");
+                        var card = $("<div>").addClass("w3-card w3-container w3-teal w3-margin-top");
                         card.css("min-height", "20px");
                         var body = $("<div>").addClass("card-body p-2");
 
@@ -110,19 +132,20 @@ $(document).ready(function () {
             success: function (data) {
                 var uv = $("<p>").text("UV Index: ");
                 var btn = $("<span>").addClass("btn btn-sm").text(data.value);
+                return data.value
 
                 // change color depending on uv value
-                if (data.value < 3) {
-                    btn.addClass("btn-success");
-                }
-                else if (data.value < 7) {
-                    btn.addClass("btn-warning");
-                }
-                else {
-                    btn.addClass("btn-danger");
-                }
+                // if (data.value < 3) {
+                //     btn.addClass("btn-success");
+                // }
+                // else if (data.value < 7) {
+                //     btn.addClass("btn-warning");
+                // }
+                // else {
+                //     btn.addClass("btn-danger");
+                // }
 
-                $("#today .card-body").append(uv.append(btn));
+                // $("#today .card-body").append(uv.append(btn));
             }
         });
     }

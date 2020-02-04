@@ -15,7 +15,7 @@
 
     <!-- Header -->
     <header class="w3-container w3-theme w3-padding" id="myHeader">
-        <i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-button w3-theme"></i>
+
         <div class="w3-center">
             <h4>“It always rains on tents. Rainstorms will travel thousands of miles, <br>against prevailing winds for
                 the
@@ -49,15 +49,15 @@
             <footer class="w3-container w3-theme-l1">
                 <p>Temperature: <span id="temp"></span> </p><br>
                 <p>Humidity: <span id="hum"></span> </p><br>
-                <p>Wind Speed: </p><br>
-                <p>UV Index: </p>
+                <p>Wind Speed: <span id="wind"></span> </p><br>
+                <p>UV Index: <span id=""></span> </p>
             </footer>
         </div>
     </div>
 
 
     <div class="w3-row-padding w3-center w3-margin-top">
-        <div class="w3-third">
+        <div class="w3-quarter">
             <div class="w3-card w3-container w3-teal" style="min-height:20px">
                 <h3>List of Search Terms</h3>
                 <ul class="history">
@@ -65,10 +65,14 @@
                 </ul>
             </div>
         </div>
+        <div class="w3-threequarter">
+            <div class="row" id="current">
 
-        <div id="forecast">
+            </div>
+            <div id="forecast">
 
 
+            </div>
         </div>
 
     </div>
