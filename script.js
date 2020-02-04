@@ -15,7 +15,7 @@ $(document).ready(function () {
     });
 
     function makeRow(text) {
-        var li = $("<li>").addClass("list-group-item list-group-item-action").text(text);
+        var li = $("<li>").addClass("list-group-item").text(text);
         $(".history").append(li);
     }
 
@@ -62,7 +62,7 @@ $(document).ready(function () {
                 var uv = uvIndex(data.coord.lat, data.coord.lon);
 
 
-                // create html elements for a bootstrap card
+                // create html elements for a current weather card
                 var col = $("<div>").addClass("w3-col");
                 var card = $("<div>").addClass("w3-card w3-container w3-teal w3-margin-top");
                 card.css("min-height", "20px");
@@ -72,7 +72,7 @@ $(document).ready(function () {
 
                 var img = $("<img>").attr("src", "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png");
 
-                var p1 = $("<h5>").addClass("card-text").text("Temp: " + data.main.temp + " °F" + "  |  " + "Humidity: " + data.main.humidity + "%" + "  |  " + "Wind Speed: " + data.wind.speed + " MPH" + " UV index: " + data.main.uv + "%");
+                var p1 = $("<h5>").addClass("card-text").text("Temp: " + data.main.temp + " °F" + "  |  " + "Humidity: " + data.main.humidity + "%" + "  |  " + "Wind Speed: " + data.wind.speed + " MPH" + "  |  " + " UV index: " + data.main.uv + "%");
                 // var p2 = $("<p>").addClass("card-text").text("Humidity: " + data.main.humidity + "%");
                 // var p3 = $("<p>").addClass("card-text").text("Wind Speed: " + data.wind.speed + "MPH");
                 // var p4 = $("<p>").addClass("card-text").text("UV index: " + 0 + "%");
