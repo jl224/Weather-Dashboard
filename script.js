@@ -1,3 +1,5 @@
+var uv = ""
+
 $(document).ready(function () {
     $("#inputSubmit").on("click", function () {
         var searchValue = $("#inputField").val();
@@ -59,7 +61,7 @@ $(document).ready(function () {
 
                 // call follow-up api endpoints
                 fivedayForecast(inputField);
-                var uv = uvIndex(data.coord.lat, data.coord.lon);
+                uv = uvIndex(data.coord.lat, data.coord.lon);
 
 
                 // create html elements for a current weather card
