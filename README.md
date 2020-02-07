@@ -3,4 +3,4 @@ Build a weather dashboard application with search functionality to find current 
 
 https://jl224.github.io/Weather-Dashboard/<br>
 
-![weather](Weather1.png)
+![weather](dashboard.png)
